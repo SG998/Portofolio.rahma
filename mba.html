@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahmadina | Professional Portfolio</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --p-purple: #E0BBE4; 
+            --l-purple: #F3E5F5; 
+            --d-purple: #9575CD; 
+            --cream: #FFFAF5;
+            --text-main: #030303;
+            --d-awal: #673e65;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--cream);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--p-purple);
+        }
+
+        .logo { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--d-purple); }
+        nav ul { display: flex; list-style: none; }
+        nav ul li a { text-decoration: none; color: var(--text-main); margin-left: 2rem; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav ul li a:hover { color: var(--d-purple); }
+
+        /* --- Hero Section (Morphing Effect) --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 8% 60px 8%;
+            background: radial-gradient(circle at top right, var(--l-purple), var(--cream));
+        }
+
+        .hero-container { display: flex; align-items: center; gap: 50px; max-width: 1200px; width: 100%; }
+        .hero-text { flex: 1.2; }
+        .hero-text h1 { font-family: 'Playfair Display', serif;
+         color: var(--d-purple); 
+         font-size: clamp(2.5rem, 5vw, 4rem);
+          line-height: 1.1; 
+          margin-bottom: 20px; }
+        .hero-text p { 
+            font-size: 1.1rem; 
+            color: var(--text-main);
+            text-align: justify;
+        }
+        
+        .profile-img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            box-shadow: 20px 20px 50px rgba(149, 117, 205, 0.2);
+            border: 10px solid white;
+            animation: morphingEffect 8s ease-in-out infinite;
+            object-fit: cover;
+        }
+
+        @keyframes morphingEffect {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        /* --- Career Journey --- */
+        .journey-section { padding: 100px 5%; background: white; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--d-purple); }
+
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::after { content: ''; position: absolute; width: 2px; background: var(--p-purple); top: 0; bottom: 0; left: 50%; }
+
+        .timeline-item { padding: 20px 50px; position: relative; width: 50%; }
+        .timeline-item::after {
+            content: ''; position: absolute; width: 20px; height: 20px; 
+            right: -10px; background: white; border: 4px solid var(--d-purple); 
+            top: 25px; border-radius: 50%; z-index: 1;
+        }
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; text-align: left; }
+        .right::after { left: -10px; }
+
+        .journey-content {
+            background: var(--cream);
+            padding: 25px; border-radius: 20px;
+            border: 1px solid var(--l-purple);
+            transition: 0.3s;
+        }
+
+        /* --- Gallery Box --- */
+        .portfolio-section { padding: 100px 5%; background: var(--l-purple); }
+        .gallery-table-box {
+            background: #fff; border-radius: 40px; padding: 40px;
+            box-shadow: 0 30px 80px rgba(149, 117, 205, 0.15);
+            max-width: 1300px; margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-auto-rows: 240px; grid-gap: 20px; grid-auto-flow: dense;
+        }
+
+        .gallery-item {
+            position: relative; border-radius: 20px; overflow: hidden;
+            cursor: pointer; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.9);
+        }
+
+        .gallery-item.wide { grid-column: span 2; }
+        .gallery-item.tall { grid-row: span 2; }
+        .gallery-item.big { grid-column: span 2; grid-row: span 2; }
+
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(149, 117, 205, 0.3);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: 0.4s; backdrop-filter: blur(2px);
+        }
+
+        .gallery-item:hover { transform: translateY(-10px) scale(1.02); filter: brightness(1.1); box-shadow: 0 20px 40px rgba(149, 117, 205, 0.4); z-index: 10; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        /* --- Ultra Aesthetic Digital Presence --- */
+        @keyframes floatCloud {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 20px); }
+        }
+
+        .social-card:hover div {
+            background: rgba(255, 255, 255, 0.8) !important;
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(149, 117, 205, 0.2);
+            border-color: #9575CD !important;
+        }
+
+        /* --- Lightbox --- */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            display: none; justify-content: center; align-items: center; z-index: 2000;
+        }
+        .lightbox-content { max-width: 90%; max-height: 85vh; border-radius: 10px; border: 8px solid white; box-shadow: 0 0 50px rgba(0,0,0,0.1); }
+        .close-lightbox { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: var(--d-purple); cursor: pointer; }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero-container { flex-direction: column-reverse; text-align: center; }
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; text-align: left; }
+            .timeline-item::after { left: 21px; }
+            .right { left: 0; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+            .gallery-item.wide, .gallery-item.big { grid-column: span 2; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" src="">
+    </div>
+
+    <nav>
+        <div class="logo">Rahmadina.</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#portfolio">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="about">
+        <div class="hero-container" data-aos="fade-up">
+            <div class="hero-text">
+                <p style="color: var(--d-awal); "font-weight: 600; letter-spacing: 4px;">Administration, Management & Creative Specialist</p> <br>
+                <h1>Hello, I'm Rahma</h1>
+                <p>Saya Rahmadina Zulhaemi Santoso, lulusan S1 Manajemen Sumber Daya Manusia yang memiliki pengalaman di bidang administrasi, manajemen, dan multimedia. Saya berfokus pada pembangunan sistem kerja yang terorganisir, profesional, dan efektif, sekaligus menghadirkan solusi kreatif yang komunikatif dalam setiap proyek.</p>
+               
+            </div>
+            <div class="hero-image">
+                <img src="mba (2).png" alt="Rahmadina" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Journey -->
+    <section class="journey-section" id="journey">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Career Journey</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="journey-content">
+                    <span>2018 - 2019</span>
+                    <h3>PT Emalls Global Indonesia</h3>
+                    <p>Admin Web & Multimedia Staff</p>
+                </div>
+            </div>
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="journey-content">
+                    <span>2019 - 2020</span>
+                    <h3>UD Sumber Urip</h3>
+                    <p>Warehouse & Web Admin</p>
+                </div>
+            </div>
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="journey-content">
+                    <span>2021 - 2022</span>
+                    <h3>Sumia Aesthetic Clinic</h3>
+                    <p>Multimedia Staff</p>
+                </div>
+            </div>
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="journey-content">
+                    <span>2024 (3 Bulan)</span>
+                    <h3>Event Hot Wheels</h3>
+                    <p>Personal Assistant </p>
+                </div>
+            </div>
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="journey-content">
+                    <span>2024 - 2025</span>
+                    <h3>PT Citra Ayu Persada</h3>
+                    <p>Personal Assistant </p>
+                </div>
+            </div>
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="journey-content">
+                    <span>2025 (3 Bulan)</span>
+                    <h3>Srikandi Demokrat Jawa Barat</h3>
+                    <p>Content Creator</p>
+                </div>
+            </div>
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="journey-content">
+                    <span>2025 (6 bulan)</span>
+                    <h3>Project manager ruku-ruku</h3>
+                    <p>Project Manager </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Gallery Exhibition</h2>
+        </div>
+        <div class="gallery-table-box" data-aos="zoom-in">
+            <div class="gallery-grid">
+                <div class="gallery-item big"><img src="1 (1).jpeg"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
+                <div class="gallery-item tall"><img src="1 (2).jpeg"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
+                <div class="gallery-item"><img src="1 (3).jpeg"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
+                <div class="gallery-item wide"><img src="1 (4).jpeg"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
+                <div class="gallery-item"><img src="1 (5).jpeg"></div>
+                <div class="gallery-item tall"><img src="1 (6).jpeg"></div>
+                <div class="gallery-item"><img src="1 (7).jpeg"></div>
+                <div class="gallery-item wide"><img src="1 (8).jpeg"></div>
+                <div class="gallery-item"><img src="1 (9).jpeg"></div>
+                <div class="gallery-item big"><img src="1 (10).jpeg"></div>
+                <div class="gallery-item"><img src="1 (11).jpeg"></div>
+                <div class="gallery-item tall"><img src="1 (12).jpeg"></div>
+                <div class="gallery-item wide"><img src="1 (13).jpeg"></div>
+                <div class="gallery-item"><img src="1 (14).jpeg"></div>
+                <div class="gallery-item"><img src="1 (15).jpeg"></div>
+                <div class="gallery-item tall"><img src="1 (16).jpeg"></div>
+                <div class="gallery-item"><img src="1 (17).jpeg"></div>
+                <div class="gallery-item wide"><img src="1 (18).jpeg"></div>
+                <div class="gallery-item"><img src="1 (19).jpeg"></div>
+                <div class="gallery-item"><img src="1 (20).jpeg"></div>
+                <div class="gallery-item big"><img src="1 (21).jpeg"></div>
+                <div class="gallery-item tall"><img src="1 (22).jpeg"></div>
+                <div class="gallery-item"><img src="1 (23).jpeg"></div>
+                <div class="gallery-item wide"><img src="1 (24).jpeg"></div>
+                <div class="gallery-item"><img src="1 (25).jpeg"></div>
+                <div class="gallery-item"><img src="1 (26).jpeg"></div>
+                <div class="gallery-item tall"><img src="1 (27).jpeg"></div>
+                <div class="gallery-item"><img src="1 (28).jpeg"></div>
+                <div class="gallery-item"><img src="1 (31).jpeg"></div>
+                <div class="gallery-item big"><img src="1 (32).jpeg"></div>
+                <div class="gallery-item tall"><img src="1 (33).jpeg"></div>
+                <div class="gallery-item"><img src="1 (23).jpeg"></div>
+                <div class="gallery-item wide"><img src="1 (34).jpeg"></div>
+                <div class="gallery-item"><img src="1 (35).jpeg"></div>
+                <div class="gallery-item tall"><img src="1 (37).jpeg"></div>
+                <div class="gallery-item"><img src="1 (38).jpeg"></div>
+                <div class="gallery-item wide"><img src="1 (39).jpeg"></div>
+                <div class="gallery-item"><img src="1 (40).jpeg"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Presence Section -->
+    <section id="contact" style="padding: 120px 5%; text-align: center; background: radial-gradient(circle at top, #ffffff, #F3E5F5, #E0BBE4); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -10%; left: -10%; width: 400px; height: 400px; background: white; filter: blur(100px); border-radius: 50%; opacity: 0.7; animation: floatCloud 10s ease-in-out infinite;"></div>
+        
+        <div style="position: relative; z-index: 2;">
+            <p style="color: #9575CD; font-weight: 600; letter-spacing: 5px; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px;">Let's be friends</p>
+            <h2 style="font-family:'Playfair Display'; font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 50px; color: #2D3436;">Digital Presence</h2>
+            
+            <div class="social-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto;">
+                <a href="https://www.instagram.com/rachmaa.naa/" target="_blank" class="social-card" style="text-decoration: none; color: inherit;">
+                    <div style="background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px 20px; border-radius: 40px; transition: 0.5s;">
+                        <i class="fab fa-instagram" style="font-size: 2.5rem; background: linear-gradient(45deg, #f09433, #bc1888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px;"></i>
+                        <span style="display: block; font-weight: 600; color: #555;">Instagram</span>
+                    </div>
+                </a>
+                <a href="https://id.linkedin.com/in/rahmadina-zulhaemi-s-6b4359168" target="_blank" class="social-card" style="text-decoration: none; color: inherit;">
+                    <div style="background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px 20px; border-radius: 40px; transition: 0.5s;">
+                        <i class="fab fa-linkedin-in" style="font-size: 2.5rem; color: #0077B5; margin-bottom: 15px;"></i>
+                        <span style="display: block; font-weight: 600; color: #555;">LinkedIn</span>
+                    </div>
+                </a>
+                <a href="https://wa.me/6281318922579" target="_blank" class="social-card" style="text-decoration: none; color: inherit;">
+                    <div style="background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px 20px; border-radius: 40px; transition: 0.5s;">
+                        <i class="fab fa-whatsapp" style="font-size: 2.5rem; color: #25D366; margin-bottom: 15px;"></i>
+                        <span style="display: block; font-weight: 600; color: #555;">WhatsApp</span>
+                    </div>
+                </a>
+                <a href="mailto:dhindhinzul@gmail.com" class="social-card" style="text-decoration: none; color: inherit;">
+                    <div style="background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); padding: 40px 20px; border-radius: 40px; transition: 0.5s;">
+                        <i class="fas fa-envelope" style="font-size: 2.5rem; color: #EA4335; margin-bottom: 15px;"></i>
+                        <span style="display: block; font-weight: 600; color: #555;">Email</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aesthetic Footer -->
+    <footer style="padding: 80px 5% 40px; text-align: center; background: #ffffff;">
+
+        <p style="font-size: 0.99rem; letter-spacing: 2px; color: #11012c; text-transform: uppercase;">
+            Copyright © AFS 2026. All Rights Reserved.
+        </p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightboxImg.src = item.querySelector('img').src;
+                lightbox.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        document.querySelector('.close-lightbox').addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    </script>
+</body>
+</html>
